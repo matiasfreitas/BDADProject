@@ -1,6 +1,8 @@
 INSERT INTO Stage (Name, Symbol)
 VALUES ('Water Adventure', 'SEA'),
-       ('Fire Adventure', 'VOLCAN');
+       ('Fire Adventure', 'VOLCAN'),
+       ('Sunpeak Island', 'Island with mountain on center'),
+       ('Everdust Desert', 'Sand Dune');
 
 
 INSERT INTO Scenario(name, width, height, background, STGName)
@@ -12,13 +14,28 @@ VALUES ('Submerse Temple', 100, 100, 'a beatifull temple praising water, ' ||
         'Water Adventure'),
        ('Generic Fire Sceneario', 100, 300, 'Everything burn close to a volcan' ||
                                              'Everything is so hot and dead here. I dont like that. ',
-        'Fire Adventure');
+        'Fire Adventure'),
+       ('Blazing Heat Temple', 300, 200, 'A beautiful greek-style temple with forges and fire-like sculptures around', 'Sunpeak Island'),
+       ('Fishermen Docks', 500, 100, 'Peacefull old but well taken-care of docks. Smells bad though', 'Sunpeak Island'),
+       ('Shadows Forest', 600, 200, 'Dark forests, creepy and full of shadows. Are they moving?', 'Sunpeak Island'),
+       ('Time Fissure', 1000, 1000, 'This surrealist painting styled place is total chaos. It extends itself pretty far also.', 'Sunpeak Island'),
+       ('Rangers Oasis', 300, 200, 'A outpost that rests in a calm, beautiful oasis. A lake in the middle tops it up perfecly', 'Everdust Desert'),
+       ('Endless Sands', 100, 1200, 'Never ending sand dunes burning under the scorching sun. Not a single drop of water in kilometers', 'Everdust Desert'),
+       ('Underground Piramids', 500, 1000, 'Sand covered piramids several hundred meters underground. ' ||
+                                           'Can not see the top even with light magic...', 'Everdust Desert'),
+       ('Aliotr Battle Scenario', 100, 50, 'A mythical temple made of hardened sand emerging from the endless' ||
+                                           'sand dunes. Aliotr rises from the top, waiting for its challenger', 'Everdust Desert');
 
 INSERT INTO Type (Name)
 VALUES ('water'),
        ('fire'),
        ('air'),
-       ('earth');
+       ('earth'),
+       ('neutral'),
+       ('light'),
+       ('darkness'),
+       ('chrono-type'),
+       ('wood');
 
 INSERT INTO Object (OBJID, Name, MaxLife, CurrentLife, x, y, TPName, SCName)
 VALUES (001, 'Diamond Rock', 100, 100, 1, 1, 'earth', 'Submerse Temple'),
@@ -30,7 +47,16 @@ VALUES (001, 'Diamond Rock', 100, 100, 1, 1, 'earth', 'Submerse Temple'),
        (007, 'Magic Water', 1000, 1000, 002, 002, 'water', 'Generic Water Sceneario'),
        (008, 'Tree', 10, 10, 002, 002, 'water', 'Generic Water Sceneario'),
        (009, 'Aqua Tree', 20, 20, 002, 002, 'water', 'Generic Water Sceneario'),
-       (010, 'Rock Fish', 1000, 1000, 002, 002, 'water', 'Generic Water Sceneario');
+       (010, 'Rock Fish', 1000, 1000, 002, 002, 'water', 'Generic Water Sceneario'),
+       (011, 'Generic Apple Tree', 100, 100, null, null, 'wood', null),
+       (012, 'Sun God Sword', 999, 999, 280, 100, 'fire', 'Blazing Heat Temple'),
+       (013, 'Hot Forge', 2000, 2000, 150, 50, 'earth', 'Blazing Heat Temple'),
+       (014, 'Fire Spirit', 320, 320, 50, 50, 'fire', 'Blazing Heat Temple'),
+       (015, 'Fishing rod', 30, 30, 50, 10, 'wood', 'Fishermen Docks'),
+       (016, 'Peixe Grandao', 20, 20, 20, 5, 'water', 'Fishermen Docks'),
+       (017, 'Ol Man Jededaia', 50, 45, 45, 10, 'neutral', 'Fishermen Docks'),
+       (018, 'Illusion Cloak', 999, 999, 300, 45, 'darkness', 'Shadows Forest');
+
 
 
 
