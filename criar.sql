@@ -22,25 +22,23 @@ CREATE TABLE Object
 DROP TABLE IF EXISTS Item;
 CREATE TABLE Item
 (
-    ITEMID      INTEGER PRIMARY KEY,
-    weight      INTEGER                                                 NOT NULL CHECK (Weight >= 0 and Weight <= 2048),
+    ITEMID      INT REFERENCES Object (OBJID) ON DELETE CASCADE NOT NULL PRIMARY KEY,
+    weight      INTEGER                                         NOT NULL CHECK (Weight >= 0 and Weight <= 2048),
     description VARCHAR(150),
-    owner       VARCHAR(30) REFERENCES Object (OBJID),
-    OBJID       VARCHAR(30) REFERENCES Object (OBJID) ON DELETE CASCADE NOT NULL
+    owner       int REFERENCES Object (OBJID)
 );
 
 -- Table: NonPlayChar
 DROP TABLE IF EXISTS NonPlayChar;
 CREATE TABLE NonPlayChar
 (
-    NPLAYID           INTEGER PRIMARY KEY,
-    speed             INTEGER                                                 NOT NULL CHECK (Speed >= 0),
-    baseDamage        INTEGER                                                 NOT NULL CHECK (BaseDamage >= 0),
-    magicalBaseDamage INTEGER                                                 NOT NULL CHECK (MagicalBaseDamage >= 0),
-    level             INTEGER                                                 NOT NULL CHECK (Level >= 0 and Level <= 20),
-    hitBox            INTEGER                                                 NOT NULL CHECK (HitBox >= 0),
-    killable          INTEGER                                                 NOT NULL CHECK (Killable = 0 or Killable = 1),
-    OBJID             VARCHAR(30) REFERENCES Object (OBJID) ON DELETE CASCADE NOT NULL,
+    NPLAYID           INT REFERENCES Object (OBJID) ON DELETE CASCADE NOT NULL PRIMARY KEY,
+    speed             INTEGER                                         NOT NULL CHECK (Speed >= 0),
+    baseDamage        INTEGER                                         NOT NULL CHECK (BaseDamage >= 0),
+    magicalBaseDamage INTEGER                                         NOT NULL CHECK (MagicalBaseDamage >= 0),
+    level             INTEGER                                         NOT NULL CHECK (Level >= 0 and Level <= 20),
+    hitBox            INTEGER                                         NOT NULL CHECK (HitBox >= 0),
+    killable          INTEGER                                         NOT NULL CHECK (Killable = 0 or Killable = 1),
     CONSTRAINT damageCheck CHECK (baseDamage != 0 or magicalBaseDamage != 0)
 );
 
@@ -48,19 +46,18 @@ CREATE TABLE NonPlayChar
 DROP TABLE IF EXISTS PlayChar;
 CREATE TABLE PlayChar
 (
-    PLAYID            VARCHAR(30) PRIMARY KEY,
-    speed             INTEGER                                                 NOT NULL CHECK (Speed >= 0),
-    baseDamage        INTEGER                                                 NOT NULL CHECK (BaseDamage >= 0),
-    magicalBaseDamage INTEGER                                                 NOT NULL CHECK (MagicalBaseDamage >= 0),
-    level             INTEGER                                                 NOT NULL CHECK (Level >= 0 and Level <= 20),
-    hitBox            INTEGER                                                 NOT NULL CHECK (HitBox >= 0),
-    strength          INTEGER                                                 NOT NULL CHECK (Strength >= 0 and Strength <= 20),
-    intelligence      INTEGER                                                 NOT NULL CHECK (Intelligence >= 0 and Intelligence <= 20),
-    dextery           INTEGER                                                 NOT NULL CHECK (Dextery >= 0 and Dextery <= 20),
-    maxEnergy         INTEGER                                                 NOT NULL CHECK (MaxEnergy >= 0),
-    currentEnergy     INTEGER                                                 NOT NULL CHECK (CurrentEnergy >= 0 and CurrentEnergy <= MaxEnergy),
-    carryWeight       INTEGER                                                 NOT NULL CHECK (CarryWeight >= 0),
-    OBJID             VARCHAR(30) REFERENCES Object (OBJID) ON DELETE CASCADE NOT NULL,
+    PLAYID            INT REFERENCES Object (OBJID) ON DELETE CASCADE NOT NULL PRIMARY KEY,
+    speed             INTEGER                                         NOT NULL CHECK (Speed >= 0),
+    baseDamage        INTEGER                                         NOT NULL CHECK (BaseDamage >= 0),
+    magicalBaseDamage INTEGER                                         NOT NULL CHECK (MagicalBaseDamage >= 0),
+    level             INTEGER                                         NOT NULL CHECK (Level >= 0 and Level <= 20),
+    hitBox            INTEGER                                         NOT NULL CHECK (HitBox >= 0),
+    strength          INTEGER                                         NOT NULL CHECK (Strength >= 0 and Strength <= 20),
+    intelligence      INTEGER                                         NOT NULL CHECK (Intelligence >= 0 and Intelligence <= 20),
+    dextery           INTEGER                                         NOT NULL CHECK (Dextery >= 0 and Dextery <= 20),
+    maxEnergy         INTEGER                                         NOT NULL CHECK (MaxEnergy >= 0),
+    currentEnergy     INTEGER                                         NOT NULL CHECK (CurrentEnergy >= 0 and CurrentEnergy <= MaxEnergy),
+    carryWeight       INTEGER                                         NOT NULL CHECK (CarryWeight >= 0),
     CONSTRAINT damageCheck CHECK (baseDamage != 0 or magicalBaseDamage != 0)
 );
 
@@ -123,9 +120,9 @@ CREATE TABLE Stage
 DROP TABLE IF EXISTS ObjectDo;
 CREATE TABLE ObjectDo
 (
-    image VARCHAR(30)                                          NOT NULL UNIQUE,
-    OBJID INTEGER REFERENCES Object (OBJID) ON DELETE CASCADE  ON UPDATE CASCADE NOT NULL,
-    ACTID INTEGER REFERENCES ActionP (ACTID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    image VARCHAR(30)                                                           NOT NULL UNIQUE,
+    OBJID INTEGER REFERENCES Object (OBJID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    ACTID INTEGER REFERENCES Action (ACTID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     PRIMARY KEY (OBJID, ACTID)
 );
 
@@ -134,9 +131,9 @@ CREATE TABLE ObjectDo
 DROP TABLE IF EXISTS InteractWith;
 CREATE TABLE InteractWith
 (
-    fromTPName INTEGER REFERENCES Type (name) ON DELETE CASCADE  ON UPDATE CASCADE NOT NULL,
-    toTPName   INTEGER REFERENCES Type (name) ON DELETE CASCADE  ON UPDATE CASCADE NOT NULL,
-    Multiple   FLOAT                          NOT NULL CHECK ( Multiple >= 0 and Multiple <= 4 ),
+    fromTPName INTEGER REFERENCES Type (name) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    toTPName   INTEGER REFERENCES Type (name) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
+    Multiple   FLOAT                                                              NOT NULL CHECK ( Multiple >= 0 and Multiple <= 4 ),
     PRIMARY KEY (fromTPName, toTPName)
 );
 
@@ -145,17 +142,17 @@ CREATE TABLE InteractWith
 DROP TABLE IF EXISTS EffectsAffectsObjects;
 CREATE TABLE EffectsAffectsObjects
 (
-    EFID  INTEGER REFERENCES Effect (EFID) ON DELETE CASCADE  ON UPDATE CASCADE NOT NULL,
-    OBJID INTEGER REFERENCES Object (OBJID) ON DELETE CASCADE  ON UPDATE CASCADE NOT NULL,
+    EFID  INTEGER REFERENCES Effect (EFID) ON DELETE CASCADE ON UPDATE CASCADE  NOT NULL,
+    OBJID INTEGER REFERENCES Object (OBJID) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
     PRIMARY KEY (EFID, OBJID)
 );
 
-
+-- Table: Drops
 DROP TABLE IF EXISTS Drops;
 CREATE TABLE Drops
 (
-    ITEMID  INTEGER REFERENCES Item (ITEMID)         NOT NULL,
-    OBJID INTEGER REFERENCES NonPlayChar (NPLAYID) NOT NULL,
+    ITEMID INTEGER REFERENCES Item (ITEMID)         NOT NULL,
+    OBJID  INTEGER REFERENCES NonPlayChar (NPLAYID) NOT NULL,
     PRIMARY KEY (ITEMID, OBJID)
 );
 
