@@ -15,7 +15,8 @@ CREATE TABLE Object
     currentLife INTEGER     NOT NULL CHECK (CurrentLife >= 0 and CurrentLife <= MaxLife),
     x           INTEGER     NOT NULL CHECK (x >= 0),
     y           INTEGER     NOT NULL CHECK (y >= 0),
-    TPName      VARCHAR(30) REFERENCES Type (name) ON DELETE SET NULL NOT NULL
+    TPName      VARCHAR(30) REFERENCES Type (name) ON DELETE SET NULL NOT NULL,
+    SCName      VARCHAR(30) REFERENCES Scenario (name) ON DELETE SET NULL NOT NULL
 );
 
 -- Table: Item
@@ -39,7 +40,7 @@ CREATE TABLE NonPlayChar
     level             INTEGER                                         NOT NULL CHECK (Level >= 0 and Level <= 20),
     hitBox            INTEGER                                         NOT NULL CHECK (HitBox >= 0),
     killable          INTEGER                                         NOT NULL CHECK (Killable = 0 or Killable = 1),
-    CONSTRAINT damageCheck CHECK (baseDamage != 0 or magicalBaseDamage != 0)
+    CONSTRAINT baseDamageCheck CHECK (baseDamage != 0 or magicalBaseDamage != 0)
 );
 
 -- Table: PlayChar
@@ -58,7 +59,7 @@ CREATE TABLE PlayChar
     maxEnergy         INTEGER                                         NOT NULL CHECK (MaxEnergy >= 0),
     currentEnergy     INTEGER                                         NOT NULL CHECK (CurrentEnergy >= 0 and CurrentEnergy <= MaxEnergy),
     carryWeight       INTEGER                                         NOT NULL CHECK (CarryWeight >= 0),
-    CONSTRAINT damageCheck CHECK (baseDamage != 0 or magicalBaseDamage != 0)
+    CONSTRAINT baseDamageCheck CHECK (baseDamage != 0 or magicalBaseDamage != 0)
 );
 
 -- Table: Action
