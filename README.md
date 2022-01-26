@@ -13,3 +13,16 @@ TRIGGER IDEAS:
 
 - Whenever you update the “Carries” table (PlayChar, Item), update PlayChar’s CarryWeight
 - When a new object is added, if it’s in a scenario, check if the object fits in it (x and y lower than width and height), if not, abort.
+
+
+QUERY IDEAS:
+
+- What effects can Gutts apply to other objects? (through his actions)
+- Which objects are damaged?
+- Which actions have already been used at least once?
+- Description from items that Gutts is carrying.
+- Which items have no owners?
+- What actions takes less than 300ms to execute?
+- How many items are there in Fishermen Docks?
+- What is Gutts heaviest item?
+- 
