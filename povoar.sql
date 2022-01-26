@@ -169,20 +169,20 @@ VALUES (039, 50, 'a magic sword for blonde guys', 016),
        (056, 1, 'An egg shaped sculpture with human nose, eyes and mouth, but all shambled into nonsense. Did it just move..?', 38),
        (057, 2, 'A well cooked octopus. Bet it does wonders for health!', null);
 
-INSERT INTO Effect(EFID, name, duration, damage)
-VALUES (1, 'Shine Bright', 10, null),
-       (2, 'Shine Bright', 20, null),
-       (3, 'Bleeding', 4, 40),
-       (4, 'Soft damage', null, 10),
-       (5, 'Considerable damage', null, 50),
-       (6, 'Severe damage', null, 100),
-       (7, 'Severe bleeding', 20, 200),
-       (8, 'First grade burn', 100, 100),
-       (9, 'Second grade burn', 300, 200),
-       (10, 'Third grade burn', 900, 300),
-       (11, 'Health boost', 100, null),
-       (12, 'Healing', 10, null),
-       (13, 'Poisoned', 4, 40);
+INSERT INTO Effect(EFID, name, duration, damage, nonDamageEffect)
+VALUES (1, 'Soft Shine Bright', 10, null, 'blind'),
+       (2, 'Shine Bright', 20, null, 'blind'),
+       (3, 'Bleeding', 4, 40, 'bleeding'),
+       (4, 'Soft damage', null, 10, null),
+       (5, 'Considerable damage', null, 50, null),
+       (6, 'Severe damage', null, 100, null),
+       (7, 'Severe bleeding', 20, 200, 'bleed'),
+       (8, 'First grade burn', 100, 100, 'bleed'),
+       (9, 'Second grade burn', 300, 200, 'burn'),
+       (10, 'Third grade burn', 900, 300, 'burn'),
+       (11, 'Health boost', 100, null, 'cure'),
+       (12, 'Healing', 10, null, 'cure'),
+       (13, 'Poisoned', 4, 40, 'poison');
 
 
 INSERT INTO Action(ACTID, name, executionTime, currentUse, maxUse, activeTimeWindow, hitbox, TPName, EFID)
@@ -213,17 +213,6 @@ VALUES ('A biiiiig slash', 37, 1),
        ('A snake bite', 29, 2),
        ('A nasty snake bite', 29, 3);
 
-INSERT INTO Type (Name)
-VALUES ('water'),
-       ('fire'),
-       ('air'),
-       ('earth'),
-       ('neutral'),
-       ('light'),
-       ('darkness'),
-       ('chrono-type'),
-       ('wood'),
-       ('poison');
 
 
 INSERT INTO InteractWith
@@ -238,7 +227,7 @@ VALUES ('water', 'fire', 0.25),
        ('wood', 'fire', 0.33),
        ('fire', 'wood', 3);
 
-INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+INSERT INTO EffectsAffectsObjects(OBJID, EFID)
 VALUES (32, 01),
        (32, 02),
        (32, 03),
@@ -253,7 +242,7 @@ VALUES (32, 01),
        (32, 12),
        (32, 13);
 
-INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+INSERT INTO EffectsAffectsObjects(OBJID, EFID)
 VALUES (39, 04),
        (39, 05),
        (39, 06),
@@ -261,25 +250,15 @@ VALUES (39, 04),
        (39, 09),
        (39, 10);
 
-INSERT INTO EffectsAffectsObjects(EFID, OBJID)
-VALUES (38, 13),
-       (38, 03),
-       (38, 06),
-       (38, 07),
-       (38, 12),
-       (38, 11);
-
-INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+INSERT INTO EffectsAffectsObjects(OBJID, EFID)
 VALUES (38, 03),
-       (38, 04),
-       (38, 05),
        (38, 06),
        (38, 07),
-       (38, 11),
        (38, 12),
+       (38, 11),
        (38, 13);
 
-INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+INSERT INTO EffectsAffectsObjects(OBJID, EFID)
 VALUES (56, 03),
        (56, 04),
        (56, 05),
