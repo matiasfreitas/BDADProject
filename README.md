@@ -3,6 +3,7 @@ Projeto de Base de dados
 
 CRIAR changes:
 
+- Suggestion: remove the EffectAffectsObject table. It makes no sense to store in "which objects can be affected by which effects" in a table. It's conceiving was a misconception of mine.
 - Objects can have null scenario (means they’re not placed anywhere)
 - Chars (NonPlay and Play) baseDamage and magicalBaseDamage attributes can be null but not both
 - Action’s max use and current use check constraint changed. Now max uses and current uses can be null, but eiter are both null or both not null. If both are not null, max uses has to be bigger than zero and current uses has to be between 0 and max uses inclusively.
