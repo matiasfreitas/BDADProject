@@ -1,0 +1,7 @@
+CREATE TRIGGER noDialogNPC
+    AFTER INSERT ON NonPlayChar
+    BEGIN
+    UPDATE NonPlayChar
+    SET dialog = '...'
+    WHERE NPLAYID = new.NPLAYID and dialog is null;
+END;

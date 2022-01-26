@@ -1,0 +1,11 @@
+SELECT * FROM Object
+    JOIN NonPlayChar NPC on Object.OBJID = NPC.NPLAYID;
+
+INSERT INTO Object (OBJID, name, maxLife, currentLife, x, y, TPName, SCName)
+VALUES (999, 'Mute NPC', 1, 1, 1, 1, 'neutral', 'Fishermen Docks')
+
+INSERT INTO NonPlayChar (nplayid, speed, basedamage, magicalbasedamage, level, hitbox, killable)
+VALUES (999, 1, 1, 1, 1, 1, 1);
+
+SELECT * FROM Object
+    JOIN NonPlayChar NPC on Object.OBJID = NPC.NPLAYID;
