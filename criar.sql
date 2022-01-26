@@ -76,7 +76,7 @@ CREATE TABLE Action
     maxUse           INTEGER,
     activeTimeWindow INTEGER,
     hitbox           INTEGER,
-    TPName           VARCHAR(30) REFERENCES Type (name) ON DELETE SET NULL NOT NULL,
+    TPName           VARCHAR(30) REFERENCES Type (name) ON DELETE SET NULL,
     EFID             VARCHAR(30) REFERENCES Effect (EFID) ON DELETE CASCADE NOT NULL,
     CONSTRAINT validateUse CHECK ((maxUse is null and currentUse is null) or
         ((maxUse is not null and currentUse is not null) and (maxUse > 0 and (currentUse >= 0 and currentUse <= maxUse))))

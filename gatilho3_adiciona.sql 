@@ -1,0 +1,7 @@
+CREATE TRIGGER noTypeActionGivenToObject
+    AFTER INSERT ON ObjectDo
+    BEGIN
+        UPDATE Action
+        SET TPName = (SELECT TPName FROM Object WHERE Object.OBJID = new.OBJID)
+        WHERE ACTID = new.ACTID and TPName is null;
+    end;
