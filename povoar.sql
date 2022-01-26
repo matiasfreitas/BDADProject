@@ -146,14 +146,15 @@ VALUES (039, 'Master Sword', 100, 100, 1, 1, 'fire', 'Generic Water Sceneario'),
        (054, 'Hawk Helm', 999, 999, null, null, 'darkness', null),
        (055, 'Healing Potion', 1, 1, null, null, 'neutral', null),
        (056, 'The Kings Egg', 9999, 9999, null, null, 'darkness', null),
-       (057, 'Well Cooked Octopus', 1, 1, 220, 10, 'water', 'Fishermen Docks');
+       (057, 'Well Cooked Octopus', 1, 1, 220, 10, 'water', 'Fishermen Docks'),
+       (058, 'Fine crafted Dagger', 1, 1, null, null, 'neutral', null);
 
 INSERT INTO Item(ITEMID, weight, description, owner)
 VALUES (039, 50, 'a magic sword for blonde guys', 032),
        (040, 10, 'a crown with a prophecy. Who desires that, dies.', NULL),
-       (041, 5, 'Make u beatifull and brave for kill your enemies', 018),
+       (041, 5, 'Make u beatifull and brave for kill your enemies', 33),
        (042, 10, 'Money for fast guys', NULL),
-       (043, 0, 'The living energy in the universe', 020),
+       (043, 0, 'The living energy in the universe', 034),
        (044, 30, 'A very well decorated crimson blade. Careful, it burns.', null),
        (045, 5, 'Pretty old but still working', null),
        (046, 2, 'A mystical cloak that maked the one wearing it invisible at will', null),
@@ -162,12 +163,13 @@ VALUES (039, 50, 'a magic sword for blonde guys', 032),
        (049, 10, 'This mystical bow is capable of firing light beams from itself! No arrows needed.', null),
        (050, 4, 'A simple water canteen. Might save someone in need.', null),
        (051, 30, 'Aliotrs Spear. Big and flashy, just like him...', null),
-       (052, 100, 'Way too big to be a sword... Is it?', 049),
-       (053, 10, 'Very well crafted repeating crossbow. A masterwork.', 049),
-       (054, 20, 'A helm with a hawk-beak shaped visor. Emanates a strong, evil energy from it.', 050),
+       (052, 100, 'Way too big to be a sword... Is it?', 037),
+       (053, 10, 'Very well crafted repeating crossbow. A masterwork.', 037),
+       (054, 20, 'A helm with a hawk-beak shaped visor. Emanates a strong, evil energy from it.', 038),
        (055, 5, 'A healing potion. Does not seem tasty', 032),
        (056, 1, 'An egg shaped sculpture with human nose, eyes and mouth, but all shambled into nonsense. Did it just move..?', 38),
-       (057, 2, 'A well cooked octopus. Bet it does wonders for health!', null);
+       (057, 2, 'A well cooked octopus. Bet it does wonders for health!', null),
+       (58, 5, 'A very well crafted dagger with no handle finishing, just iron.', 37);
 
 INSERT INTO Effect(EFID, name, duration, damage, nonDamageEffect)
 VALUES (1, 'Soft Shine Bright', 10, null, 'blind'),
