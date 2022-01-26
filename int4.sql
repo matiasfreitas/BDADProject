@@ -5,7 +5,7 @@
 
 
 
-SELECT max(Object.currentLife), Object.*
+SELECT max(Object.currentLife), Object.Name, Object.TPName, Object.SCName
 FROM Object, Item
 WHERE Object.OBJID = Item.ITEMID and (Item.owner is null or Object.maxLife>100)
 GROUP BY Object.TPName
