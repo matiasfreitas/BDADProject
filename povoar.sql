@@ -35,7 +35,8 @@ VALUES ('water'),
        ('light'),
        ('darkness'),
        ('chrono-type'),
-       ('wood');
+       ('wood'),
+       ('poison');
 
 INSERT INTO Object (OBJID, Name, MaxLife, CurrentLife, x, y, TPName, SCName)
 VALUES (001, 'Diamond Rock', 100, 100, 1, 1, 'earth', 'Submerse Temple'),
@@ -70,7 +71,7 @@ VALUES (016, 'Generic fish', 100, 100, 1, 1,'water', 'Generic Water Sceneario'),
        (026, 'Ancient Mummy', 200, 200, 100, 100, 'darkness', 'Underground Piramids'),
        (027, 'Ranger Marakov', 250, 250, 100, 10, 'neutral', 'Rangers Oasis'),
        (028, 'Captain Ahmad', 1400, 1400, 115, 10, 'neutral', 'Rangers Oasis'),
-       (029, 'Sand Snake', 100, 100, 10, 400, 'earth', 'Endless Sands'),
+       (029, 'Sand Snake', 100, 100, 10, 400, 'poison', 'Endless Sands'),
        (030, 'Desert Harpy', 250, 250, 70, 450, 'air', 'Endless Sands'),
        (031, 'Aliotr, The Molten God', 800, 800, 50, 40, 'fire', 'Aliotr Battle Scenario');
 
@@ -135,7 +136,10 @@ VALUES (039, 'Mastersword', 100, 100, 1, 1, 'fire', 'Generic Water Sceneario'),
        (051, 'The Sun Spear', 999, 999, null, null, 'light', null),
        (052, 'The Iron Slab', 999, 999, null, null, 'neutral', null),
        (053, 'Repeating Crossbow', 100, 100, null, null, 'wood', null),
-       (054, 'Hawk Helm', 999, 999, null, null, 'darkness', null);
+       (054, 'Hawk Helm', 999, 999, null, null, 'darkness', null),
+       (055, 'Healing Potion', 1, 1, null, null, 'neutral', null),
+       (056, 'The Kings Egg', 9999, 9999, null, null, 'darkness', null),
+       (057, 'Well Cooked Octopus', 1, 1, 220, 10, 'water', 'Fishermen Docks');
 
 INSERT INTO Item(ITEMID, weight, description, owner)
 VALUES (039, 50, 'a magic sword for blonde guys', 016),
@@ -153,7 +157,52 @@ VALUES (039, 50, 'a magic sword for blonde guys', 016),
        (051, 4, 'A simple water canteen. Might save someone in need.', null),
        (052, 80, 'Way too big to be a sword... Is it?', 049),
        (053, 10, 'Very well crafted repeating crossbow. A masterwork.', 049),
-       (054, 20, 'A helm with a hawk-beak shaped visor. Emanates a strong, evil energy from it.', 050);
+       (054, 20, 'A helm with a hawk-beak shaped visor. Emanates a strong, evil energy from it.', 050),
+       (055, 5, 'A healing potion. Does not seem tasty', 032),
+       (056, 1, 'An egg shaped sculpture with human nose, eyes and mouth, but all shambled into nonsense. Did it just move..?', 38),
+       (057, 2, 'A well cooked octopus. Bet it does wonders for health!', null);
+
+INSERT INTO Effect(EFID, name, duration, damage)
+VALUES (1, 'Shine Bright', 10, null),
+       (2, 'Shine Bright', 20, null),
+       (3, 'Bleeding', 4, 40),
+       (4, 'Soft damage', null, 10),
+       (5, 'Considerable damage', null, 50),
+       (6, 'Severe damage', null, 100),
+       (7, 'Severe bleeding', 20, 200),
+       (8, 'First grade burn', 100, 100),
+       (9, 'Second grade burn', 300, 200),
+       (10, 'Third grade burn', 900, 300),
+       (11, 'Health boost', 100, null),
+       (12, 'Healing', 10, null),
+       (13, 'Poisoned', 4, 40);
 
 
+INSERT INTO Action(ACTID, name, executionTime, currentUse, maxUse, activeTimeWindow, hitbox, TPName, EFID)
+VALUES (1, 'Gutts Slash', 250, null, null, 500, 2, 'neutral', 6),
+       (2, 'Snake bite', 1890, null, null, 350, 1, 'poison', 5),
+       (3, 'Poisonous bite', 2200, 1, 1, 350, 1, 'poison', 13),
+       (4, 'Fire Whisper', 1000, null, null, 750, 3, 'fire', 9),
+       (5, 'Fireball', 1500, 1, 2, 350, 5, 'fire', 10),
+       (6, 'Health wonders', 0, 1, 1, null, null, 'neutral', 12),
+       (7, 'Health wonders', 0, 1, 1, null, null, 'water', 11),
+       (8, 'Constrict', 0, null, null, 2000, 4, 'earth', 4),
+       (9, 'Reflect', 0, null, null, 2000, 10, 'light', 1),
+       (10, 'Shine', 2000, null, null, 3000, 10, 'fire', 2),
+       (11, 'Fire crossbow', 100, 3, 5, 250, 1, 'neutral', 5),
+       (12, 'Throw dagger', 250, 3, 4, 250, 1, 'neutral', 3);
+
+INSERT INTO ObjectDo(IMAGE, OBJID, ACTID)
+VALUES ('A biiiiig slash', 37, 1),
+       ('A flying projectile', 37, 11),
+       ('A flying dagger', 37, 12),
+       ('A fire-like shine', 12, 10),
+       ('Prism-like light', 1, 9),
+       ('A sucking sand pit', 13, 8),
+       ('Little stars around the player', 57, 7),
+       ('Green stars around the player', 55, 6),
+       ('An exploding fireball', 21, 5),
+       ('Wide flames waving', 21, 4),
+       ('A snake bite', 29, 2),
+       ('A nasty snake bite', 29, 3);
 -- Action, Effect, ObjectDo, InteractWith, EffectsAffectsObjects)
