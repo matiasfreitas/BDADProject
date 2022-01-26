@@ -28,7 +28,7 @@ CREATE TABLE Item
     ITEMID      INT REFERENCES Object (OBJID) ON DELETE CASCADE NOT NULL PRIMARY KEY,
     weight      INTEGER                                         NOT NULL CHECK (weight >= 0 and weight <= 2048),
     description VARCHAR(150),
-    owner       int REFERENCES Object (OBJID)
+    owner       INT REFERENCES Object (OBJID)
 );
 
 -- Table: NonPlayChar

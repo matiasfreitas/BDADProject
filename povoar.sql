@@ -1,6 +1,6 @@
 INSERT INTO Stage (Name, Symbol)
-VALUES ('Water Adventure', 'SEA'),
-       ('Fire Adventure', 'VOLCAN'),
+VALUES ('Water Adventure', 'Sea'),
+       ('Fire Adventure', 'Volcan'),
        ('Sunpeak Island', 'Island with mountain on center'),
        ('Everdust Desert', 'Sand Dune');
 
@@ -149,7 +149,7 @@ VALUES (039, 'Mastersword', 100, 100, 1, 1, 'fire', 'Generic Water Sceneario'),
        (057, 'Well Cooked Octopus', 1, 1, 220, 10, 'water', 'Fishermen Docks');
 
 INSERT INTO Item(ITEMID, weight, description, owner)
-VALUES (039, 50, 'a magic sword for blonde guys', 016),
+VALUES (039, 50, 'a magic sword for blonde guys', 032),
        (040, 10, 'a crown with a prophecy. Who desires that, dies.', NULL),
        (041, 5, 'Make u beatifull and brave for kill your enemies', 018),
        (042, 10, 'Money for fast guys', NULL),
@@ -271,21 +271,6 @@ VALUES (56, 03),
        (56, 12),
        (56, 13);
 
-
-INSERT INTO EffectsAffectsObjects(OBJID, EFID)
-VALUES (56, 03),
-       (56, 04),
-       (56, 05),
-       (56, 06),
-       (56, 07),
-       (56, 08),
-       (56, 09),
-       (56, 10),
-       (56, 11),
-       (56, 12),
-       (56, 13);
-
-
 INSERT INTO Drops(ITEMID, OBJID)
 VALUES (55, 19),
        (43, 21),
@@ -294,7 +279,6 @@ VALUES (55, 19),
        (57, 28),
        (56, 28),
        (51, 17),
-       (11, 56),
        (56, 11),
        (56, 12),
        (56, 13);
