@@ -1,0 +1,10 @@
+SELECT * FROM Object;
+
+INSERT INTO Object (name, maxLife, currentLife, x, y, TPName, SCName)
+VALUES ('Something out of bounds', 1, 1, 301, 200, 'neutral', 'Blazing Heat Temple');
+-- x out of bounds case
+INSERT INTO Object (name, maxLife, currentLife, x, y, TPName, SCName)
+VALUES ('Something out of bounds', 1, 1, 300, 201, 'neutral', 'Blazing Heat Temple');
+-- y out of bounds case
+
+SELECT * FROM OBJECT;

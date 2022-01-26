@@ -95,10 +95,10 @@ VALUES (016, 10, 10, 10, 2, 2, 1, 'bloop bloop'),
        (025, 15, 50, 45, 6, 3, 1, '...'),
        (026, 7, 30, 5, 3, 2, 1, 'Hmmuuhmmhmm'),
        (027, 18, 30, null, 3, 2, 0, 'Yo there, need anything? Talk to Captain Ahmad, he will be glad to help.'),
-       (028, 25, 200, 190, 20, 2, 0, ''),
-       (029, 30, 60, 10, 4, 1, 1),
-       (030, 40, 70, null, 5, 1, 1),
-       (031, 45, 190, 100, 12, 3, 1);
+       (028, 25, 200, 190, 20, 2, 0, 'Sometimes we just need to think out-loud to clear the ways of the mind.'),
+       (029, 30, 60, 10, 4, 1, 1, 'Shhhhh... Shhhh...'),
+       (030, 40, 70, null, 5, 1, 1, 'KYAAAAAAAAAW! COW! COW! COW!'),
+       (031, 45, 190, 100, 12, 3, 1, 'So you come here willingly to be burnt to ASHES? So be it.');
 
 
 INSERT INTO Object (OBJID, Name, MaxLife, CurrentLife, x, y, TPName, SCName)
