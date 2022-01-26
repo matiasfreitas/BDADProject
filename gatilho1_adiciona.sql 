@@ -1,0 +1,12 @@
+CREATE TRIGGER CheckPosition BEFORE INSERT ON Object
+    BEGIN
+        SELECT
+               CASE
+                   WHEN new.x IS NOT NULL AND new.x NOT BETWEEN 0 AND
+                       (SELECT width FROM Scenario WHERE name = new.SCName)
+                   THEN RAISE (ABORT, 'INVALID X COORDINATE')
+                   WHEN new.y IS NOT NULL AND new.y NOT BETWEEN 0 AND
+                       (SELECT height FROM Scenario WHERE name = new.SCName)
+                   THEN RAISE (ABORT, 'INVALID Y COORDINATE')
+                   END;
+    end;

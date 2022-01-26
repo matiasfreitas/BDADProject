@@ -42,6 +42,7 @@ CREATE TABLE NonPlayChar
     level             INTEGER                                         NOT NULL CHECK (level >= 0 and level <= 20),
     hitBox            INTEGER                                         NOT NULL CHECK (hitBox >= 0),
     killable          INTEGER                                         NOT NULL CHECK (killable = 0 or killable = 1),
+    dialog            VARCHAR(100)
     CONSTRAINT baseDamageCheck CHECK (baseDamage is not null or magicalBaseDamage is not null)
 );
 
