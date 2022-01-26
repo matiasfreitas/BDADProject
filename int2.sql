@@ -5,7 +5,7 @@
 
 SELECT Object.Name
 FROM Object
-WHERE Object.OBJID>50
+WHERE Object.maxLife>50
 EXCEPT
 SELECT Object.name
 FROM Object, Effect, EffectsAffectsObjects
