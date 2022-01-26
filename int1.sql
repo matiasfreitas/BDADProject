@@ -3,15 +3,9 @@
 .nullvalue NULL
 
 
-DROP VIEW IF EXISTS SunSpearOwner;
-CREATE VIEW SunSpearOwner AS
-    SELECT Drops.OBJID
-    FROM Object, Drops
-    WHERE Object.OBJID = Drops.ITEMID and Object.name = 'The Sun Spear';
 
-SELECT name, maxLife
-FROM SunSpearOwner, Object
-WHERE SunSpearOwner.OBJID = Object.OBJID and maxLife<1000
-ORDER BY maxLife
-
+SELECT Object.name, min(Object.maxLife)
+FROM (Drops JOIN Object O on O.OBJID = Drops.ITEMID), Object
+WHERE O.name = 'The Sun Spear' and Drops.OBJID = Object.OBJID
+ORDER BY Object.maxLife
 
