@@ -28,7 +28,7 @@ CREATE TABLE Item
     ITEMID      INT REFERENCES Object (OBJID) ON DELETE CASCADE NOT NULL PRIMARY KEY,
     weight      INTEGER                                         NOT NULL CHECK (weight >= 0 and weight <= 2048),
     description VARCHAR(150),
-    owner       INT REFERENCES Object (OBJID)
+    owner       INT REFERENCES Object (OBJID) ON DELETE SET NULL
 );
 
 -- Table: NonPlayChar
@@ -77,8 +77,8 @@ CREATE TABLE Action
     hitbox           INTEGER,
     TPName           VARCHAR(30) REFERENCES Type (name) ON DELETE SET NULL NOT NULL,
     EFID             VARCHAR(30) REFERENCES Effect (EFID) ON DELETE CASCADE NOT NULL,
-    CONSTRAINT validateUse CHECK (maxUse is null and currentUse is null or (
-        (maxUse is not null and currentUse is not null) and (maxUse > 0 and (currentUse >= 0 and currentUse <= maxUse))))
+    CONSTRAINT validateUse CHECK ((maxUse is null and currentUse is null) or
+        ((maxUse is not null and currentUse is not null) and (maxUse > 0 and (currentUse >= 0 and currentUse <= maxUse))))
 );
 
 -- Table: Effect
@@ -86,7 +86,7 @@ DROP TABLE IF EXISTS Effect;
 CREATE TABLE Effect
 (
     EFID     INTEGER PRIMARY KEY,
-    name     VARCHAR(30) NOT NULL UNIQUE,
+    name     VARCHAR(30) NOT NULL,
     duration INTEGER,
     damage   INTEGER,
     nonDamageEffect VARCHAR(150),
