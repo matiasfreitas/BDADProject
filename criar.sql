@@ -89,8 +89,8 @@ CREATE TABLE Effect
     name     VARCHAR(30) NOT NULL UNIQUE,
     duration INTEGER,
     damage   INTEGER
-    -- nonDamageEffect VARCHAR(150),
-    -- CONSTRAINT validateEffect CHECK (damage is not null or nonDamageEffect is not null)
+    nonDamageEffect VARCHAR(150),
+    CONSTRAINT validateEffect CHECK (damage is not null or nonDamageEffect is not null)
 );
 
 

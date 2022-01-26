@@ -15,15 +15,22 @@ VALUES ('Submerse Temple', 100, 100, 'a beatifull temple praising water, ' ||
        ('Generic Fire Sceneario', 100, 300, 'Everything burn close to a volcan' ||
                                              'Everything is so hot and dead here. I dont like that. ',
         'Fire Adventure'),
-       ('Blazing Heat Temple', 300, 200, 'A beautiful greek-style temple with forges and fire-like sculptures around', 'Sunpeak Island'),
-       ('Fishermen Docks', 500, 100, 'Peacefull old but well taken-care of docks. Smells bad though', 'Sunpeak Island'),
-       ('Shadows Forest', 600, 200, 'Dark forests, creepy and full of shadows. Are they moving?', 'Sunpeak Island'),
-       ('Time Fissure', 1000, 1000, 'This surrealist painting styled place is total chaos. It extends itself pretty far also.', 'Sunpeak Island'),
-       ('Rangers Oasis', 300, 200, 'A outpost that rests in a calm, beautiful oasis. A lake in the middle tops it up perfecly', 'Everdust Desert'),
+       ('Blazing Heat Temple', 300, 200, 'A beautiful greek-style temple' ||
+                                         ' with forges and fire-like sculptures around', 'Sunpeak Island'),
+       ('Fishermen Docks', 500, 100, 'Peacefull old but well taken-care of docks. ' ||
+                                     'Smells bad though', 'Sunpeak Island'),
+       ('Shadows Forest', 600, 200, 'Dark forests, creepy and full of shadows.' ||
+                                    ' Are they moving?', 'Sunpeak Island'),
+       ('Time Fissure', 1000, 1000, 'This surrealist painting styled place is total chaos.' ||
+                                    ' It extends itself pretty far also.', 'Sunpeak Island'),
+       ('Rangers Oasis', 300, 200, 'A outpost that rests in a calm, beautiful oasis.' ||
+                                   ' A lake in the middle tops it up perfecly', 'Everdust Desert'),
        ('Endless Sands', 100, 1200, 'Never ending sand dunes burning under the scorching sun. Not a single drop of water in kilometers', 'Everdust Desert'),
-       ('Underground Piramids', 500, 1000, 'Sand covered piramids several hundred meters underground. ' ||
+       ('Underground Piramids', 500, 1000, 'Sand covered piramids several hundred' ||
+                                           ' meters underground. ' ||
                                            'Can not see the top even with light magic...', 'Everdust Desert'),
-       ('Aliotr Battle Scenario', 100, 50, 'A mythical temple made of hardened sand emerging from the endless' ||
+       ('Aliotr Battle Scenario', 100, 50, 'A mythical temple made of hardened sand emerging' ||
+                                           ' from the endless' ||
                                            'sand dunes. Aliotr rises from the top, waiting for its challenger', 'Everdust Desert');
 
 INSERT INTO Type (Name)
@@ -62,9 +69,9 @@ VALUES (016, 'Generic fish', 100, 100, 1, 1,'water', 'Generic Water Sceneario'),
        (017, 'Some Strange Fish Talking With Me', 10, 10, 001, 001, 'water', 'Generic Water Sceneario'),
        (018, 'Crazy Mermaid', 1000, 500, 001, 001, 'water', 'Generic Water Sceneario'),
        (019, 'Bob, the shrimp', 1000, 1000, 001, 001, 'water','Generic Water Sceneario'),
-       (020, 'Something Kooks Like Fish But Is Not a Fish', 1000, 1000, 001, 001, 'earth', 'Generic Water Sceneario'),
+       (020, 'Something Looks Like Fish But Is Not a Fish', 1000, 1000, 001, 001, 'earth', 'Generic Water Sceneario'),
        (021, 'Fire Spirit', 320, 320, 50, 50, 'fire', 'Blazing Heat Temple'),
-       (022, 'Peixe Grandao', 20, 20, 20, 5, 'water', 'Fishermen Docks'),
+       (022, 'Hugeee fish', 20, 20, 20, 5, 'water', 'Fishermen Docks'),
        (023, 'Ol Man Jededaia', 50, 45, 45, 10, 'neutral', 'Fishermen Docks'),
        (024, 'Evil Shadow', 90, 90, 290, 45, 'darkness', 'Shadows Forest'),
        (025, 'Time Aberration', 300, 300, 200, 300, 'chrono-type', 'Time Fissure'),
@@ -205,4 +212,89 @@ VALUES ('A biiiiig slash', 37, 1),
        ('Wide flames waving', 21, 4),
        ('A snake bite', 29, 2),
        ('A nasty snake bite', 29, 3);
--- Action, Effect, ObjectDo, InteractWith, EffectsAffectsObjects)
+
+INSERT INTO Type (Name)
+VALUES ('water'),
+       ('fire'),
+       ('air'),
+       ('earth'),
+       ('neutral'),
+       ('light'),
+       ('darkness'),
+       ('chrono-type'),
+       ('wood'),
+       ('poison');
+
+
+INSERT INTO InteractWith
+VALUES ('water', 'fire', 0.25),
+       ('fire', 'water', 4),
+       ('water', 'air', 1.5),
+       ('air', 'earth', 0.5),
+       ('neutral', 'darkness', 1.5),
+       ('neutral', 'light', 1.5),
+       ('poison', 'water', 2),
+       ('water', 'poison', 1.5),
+       ('wood', 'fire', 0.33),
+       ('fire', 'wood', 3);
+
+INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+VALUES (32, 01),
+       (32, 02),
+       (32, 03),
+       (32, 04),
+       (32, 05),
+       (32, 06),
+       (32, 07),
+       (32, 08),
+       (32, 09),
+       (32, 10),
+       (32, 11),
+       (32, 12),
+       (32, 13);
+
+INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+VALUES (39, 04),
+       (39, 05),
+       (39, 06),
+       (39, 08),
+       (39, 09),
+       (39, 10);
+
+INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+VALUES (38, 13),
+       (38, 03),
+       (38, 06),
+       (38, 07),
+       (38, 12),
+       (38, 11);
+
+INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+VALUES (38, 03),
+       (38, 04),
+       (38, 05),
+       (38, 06),
+       (38, 07),
+       (38, 11),
+       (38, 12),
+       (38, 13);
+
+INSERT INTO EffectsAffectsObjects(EFID, OBJID)
+VALUES (56, 03),
+       (56, 04),
+       (56, 05),
+       (56, 06),
+       (56, 07),
+       (56, 08),
+       (56, 09),
+       (56, 10),
+       (56, 11),
+       (56, 12),
+       (56, 13);
+
+
+
+
+
+
+
