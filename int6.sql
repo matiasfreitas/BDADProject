@@ -20,3 +20,4 @@ From Object
 INNER JOIN NonPlayChar NPC on Object.OBJID = NPC.NPLAYID
 
 -- Show me all characters and whether they are damaged or not
+
